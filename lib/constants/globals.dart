@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rosseti_second/models/models.dart';
+import 'package:rosseti_second/data/models/models.dart';
 
 class Globals {
   static String _token = '';

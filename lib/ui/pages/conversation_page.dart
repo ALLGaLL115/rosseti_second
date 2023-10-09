@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rosseti_second/main.dart';
+import 'package:rosseti_second/data/models/models.dart';
 
 import '../../constants/constants.dart';
 import 'package:grouped_list/grouped_list.dart';

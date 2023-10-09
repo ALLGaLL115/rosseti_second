@@ -2,9 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:rosseti_second/constants/constants.dart';
 import 'package:rosseti_second/ui/pages/pages.dart';
 
-import '../../data_providers.dart';
+import '../../data/data_providers.dart';
 
-class SmsPage extends StatelessWidget {
+// class SmsPage extends StatelessWidget {
+//   final String code;
+//   final String phone;
+//   const SmsPage({
+//     super.key,
+//     required this.code,
+//     required this.phone,
+//   });
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return SmsView(phone: phone, code: code);
+//   }
+// }
+
+class SmsPage extends StatefulWidget {
   final String code;
   final String phone;
   const SmsPage({
@@ -14,25 +29,10 @@ class SmsPage extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
-    return SmsView(phone: phone, code: code);
-  }
+  State<SmsPage> createState() => _SmsPageState();
 }
 
-class SmsView extends StatefulWidget {
-  final String code;
-  final String phone;
-  const SmsView({
-    super.key,
-    required this.code,
-    required this.phone,
-  });
-
-  @override
-  State<SmsView> createState() => _SmsViewState();
-}
-
-class _SmsViewState extends State<SmsView> {
+class _SmsPageState extends State<SmsPage> {
   TextEditingController controller = TextEditingController();
   @override
   void dispose() {
@@ -51,9 +51,9 @@ class _SmsViewState extends State<SmsView> {
           const SizedBox(
             height: 150,
           ),
-          InputField(hintText: "Код из СМС", controller: controller),
+          inputField(hintText: "Код из СМС", controller: controller),
           const SizedBox(height: 20),
-          ContinueButton(
+          continueButton(
               onPressed: () async {
                 if (controller.text == widget.code) {
                   FocusScope.of(context).unfocus();

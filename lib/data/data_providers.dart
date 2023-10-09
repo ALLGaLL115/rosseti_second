@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'package:rosseti_second/constants/globals.dart';
-import 'package:rosseti_second/models/models.dart';
+import 'package:rosseti_second/data/models/models.dart';
 
 class DataProviders {
   static Future getCode({required String phone}) async {

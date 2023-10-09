@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:rosseti_second/constants/globals.dart';
-import 'package:rosseti_second/constants/text_style.dart';
-import 'package:rosseti_second/constants/widgets.dart';
-import 'package:rosseti_second/data/models/models.dart';
-import 'package:rosseti_second/ui/pages/do_expert_dissizion_page.dart';
 
-class SuggestionPage extends StatefulWidget {
-  const SuggestionPage({super.key});
+import '../../constants/constants.dart';
+import '../../data/models/models.dart';
+import 'pages.dart';
+
+class ProjectsForCheckPage extends StatefulWidget {
+  const ProjectsForCheckPage({
+    super.key,
+  });
 
   @override
-  State<SuggestionPage> createState() => _SuggestionPageState();
+  State<ProjectsForCheckPage> createState() => _ProjectsForCheckPageState();
 }
 
-class _SuggestionPageState extends State<SuggestionPage> {
+class _ProjectsForCheckPageState extends State<ProjectsForCheckPage> {
   List<Suggestion> suggestions = Globals().suggesitons;
 
   @override

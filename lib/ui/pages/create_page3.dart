@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:rosseti_second/models/models.dart';
+import 'package:rosseti_second/data/models/models.dart';
 import 'package:rosseti_second/ui/pages/pages.dart';
 import 'package:video_player/video_player.dart';
 
@@ -97,7 +97,7 @@ class _CreatePage3State extends State<CreatePage3> {
                                     ? Image.asset(
                                         "assets/images/play_arrow.png")
                                     : VideoPlayer(_videoPlayerController))),
-                        RoundedCameraButton(
+                        roundedCameraButton(
                           assetImagePath: "assets/images/imagBtn.png",
                           onPressed: () => showModalBottomSheet(
                             context: context,
@@ -110,7 +110,7 @@ class _CreatePage3State extends State<CreatePage3> {
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceAround,
                                     children: [
-                                      ContinueButton(
+                                      continueButton(
                                           onPressed: () async {
                                             File _image = await pickImage(
                                                 imageSource:
@@ -127,7 +127,7 @@ class _CreatePage3State extends State<CreatePage3> {
                                         "or",
                                         style: standartGrey,
                                       ),
-                                      ContinueButton(
+                                      continueButton(
                                           onPressed: () async {
                                             File _image = await pickImage(
                                                 imageSource:
@@ -147,7 +147,7 @@ class _CreatePage3State extends State<CreatePage3> {
                             },
                           ),
                         ),
-                        RoundedCameraButton(
+                        roundedCameraButton(
                             onPressed: () => showModalBottomSheet(
                                   context: context,
                                   builder: (BuildContext context) {
@@ -159,7 +159,7 @@ class _CreatePage3State extends State<CreatePage3> {
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceAround,
                                           children: [
-                                            ContinueButton(
+                                            continueButton(
                                                 onPressed: () async {
                                                   File videos = await pickVideo(
                                                       imageSource:
@@ -180,7 +180,7 @@ class _CreatePage3State extends State<CreatePage3> {
                                               "or",
                                               style: standartGrey,
                                             ),
-                                            ContinueButton(
+                                            continueButton(
                                                 onPressed: () async {
                                                   File videos = await pickVideo(
                                                       imageSource:
@@ -208,7 +208,7 @@ class _CreatePage3State extends State<CreatePage3> {
                       ],
                     ),
                   ),
-                  ContinueButton(
+                  continueButton(
                       onPressed: () {
                         if (imageFile != null && videoPath != null) {
                           SendSuggestion.addFrom3(

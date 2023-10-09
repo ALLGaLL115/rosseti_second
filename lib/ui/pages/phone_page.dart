@@ -1,32 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import '../../constants/constants.dart';
-import '../../constants/widgets.dart';
-import '../../data_providers.dart';
+import '../../data/data_providers.dart';
 import 'pages.dart';
 import 'package:flutter_multi_formatter/flutter_multi_formatter.dart';
 
-class PhonePage extends StatelessWidget {
+class PhonePage extends StatefulWidget {
   const PhonePage({
     super.key,
   });
 
   @override
-  Widget build(BuildContext context) {
-    return const PhoneView();
-  }
+  State<PhonePage> createState() => _PhonePageState();
 }
 
-class PhoneView extends StatefulWidget {
-  const PhoneView({
-    super.key,
-  });
-
-  @override
-  State<PhoneView> createState() => _PhoneViewState();
-}
-
-class _PhoneViewState extends State<PhoneView> {
+class _PhonePageState extends State<PhonePage> {
   TextEditingController controller = TextEditingController();
 
   PhoneCountryData? _initialCountryData;
@@ -111,7 +98,7 @@ class _PhoneViewState extends State<PhoneView> {
                 const SizedBox(
                   height: 20,
                 ),
-                ContinueButton(
+                continueButton(
                     onPressed: () async {
                       if (controller.text.length > 17) {
                         final code =

@@ -54,7 +54,7 @@ class _StartPageState extends State<StartPage> {
                     fontWeight: FontWeight.w400),
               ),
               const Spacer(),
-              ContinueButton(
+              continueButton(
                   onPressed: () {
                     Navigator.of(context).push(MaterialPageRoute(
                       builder: (context) => const PhonePage(),

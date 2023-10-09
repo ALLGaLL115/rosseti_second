@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rosseti_second/models/models.dart';
+import 'package:rosseti_second/data/models/models.dart';
 import 'package:rosseti_second/ui/pages/pages.dart';
 
 import '../../constants/constants.dart';
@@ -163,11 +163,11 @@ class _CreatePage1State extends State<CreatePage1> {
                 const SizedBox(
                   height: 35,
                 ),
-                InputField(hintText: "Название", controller: controller),
+                inputField(hintText: "Название", controller: controller),
                 const SizedBox(
                   height: 188,
                 ),
-                ContinueButton(
+                continueButton(
                     onPressed: () {
                       if (value != "" && controller.text.isNotEmpty) {
                         final topicId = Globals().topics.indexOf(value);

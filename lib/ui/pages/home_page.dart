@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rosseti_second/constants/constants.dart';
-import 'package:rosseti_second/data_providers.dart';
-import 'package:rosseti_second/main.dart';
-import 'package:rosseti_second/models/models.dart';
+import 'package:rosseti_second/data/data_providers.dart';
+import 'package:rosseti_second/data/models/models.dart';
 import 'package:rosseti_second/ui/pages/pages.dart';
 
 class MainPage extends StatefulWidget {
@@ -54,7 +53,7 @@ class _MainPageState extends State<MainPage> {
         body: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            MainPageWidget(
+            mainPageWidget(
                 text: "Создать\nпредложение",
                 assetImagePath: "assets/images/create 1.png",
                 onPressed: () {
@@ -62,7 +61,7 @@ class _MainPageState extends State<MainPage> {
                     builder: (context) => CreatePage1(),
                   ));
                 }),
-            MainPageWidget(
+            mainPageWidget(
                 text: "Заявки",
                 assetImagePath: "assets/images/idea 1.png",
                 onPressed: () {
@@ -70,7 +69,7 @@ class _MainPageState extends State<MainPage> {
                     builder: (context) => const SuggestionPage(),
                   ));
                 }),
-            MainPageWidget(
+            mainPageWidget(
                 text: "Экспертизы",
                 assetImagePath: "assets/images/skills 1.png",
                 onPressed: () {

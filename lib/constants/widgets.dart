@@ -5,39 +5,31 @@ import 'package:image_picker/image_picker.dart';
 import 'package:rosseti_second/constants/constants.dart';
 import 'package:rosseti_second/ui/pages/status_page.dart';
 
-class ContinueButton extends StatelessWidget {
-  final VoidCallback onPressed;
-  final String text;
-  const ContinueButton({
-    super.key,
-    required this.onPressed,
-    required this.text,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      height: 58,
-      decoration: BoxDecoration(
-          color: Colors.white,
-          boxShadow: [
-            BoxShadow(offset: Offset(0, 0.3), blurRadius: 0.11, spreadRadius: 0)
-          ],
-          borderRadius: BorderRadius.circular(24)),
-      child: FilledButton(
-        style: FilledButton.styleFrom(
-            backgroundColor: Colors.white,
-            surfaceTintColor: Colors.white,
-            shadowColor: Colors.black),
-        onPressed: onPressed,
-        child: Text(
-          text,
-          style: standart,
-        ),
+Widget continueButton({
+  required VoidCallback onPressed,
+  required String text,
+}) {
+  return Container(
+    width: double.infinity,
+    height: 58,
+    decoration: BoxDecoration(
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(offset: Offset(0, 0.3), blurRadius: 0.11, spreadRadius: 0)
+        ],
+        borderRadius: BorderRadius.circular(24)),
+    child: FilledButton(
+      style: FilledButton.styleFrom(
+          backgroundColor: Colors.white,
+          surfaceTintColor: Colors.white,
+          shadowColor: Colors.black),
+      onPressed: onPressed,
+      child: Text(
+        text,
+        style: standart,
       ),
-    );
-  }
+    ),
+  );
 }
 
 class UsersPicture extends StatelessWidget {
@@ -99,110 +91,84 @@ class HeroPage extends StatelessWidget {
   }
 }
 
-class MainPageWidget extends StatelessWidget {
-  final String text;
-  final String assetImagePath;
-  final VoidCallback onPressed;
-  const MainPageWidget({
-    super.key,
-    required this.text,
-    required this.assetImagePath,
-    required this.onPressed,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 35),
-      child: ElevatedButton(
-        onPressed: onPressed,
-        style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.white,
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
-          surfaceTintColor: Colors.white,
-        ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 35),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Image.asset(assetImagePath),
-              Text(
-                text,
-                textAlign: TextAlign.center,
-                style: standart,
-                softWrap: true,
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class InputField extends StatelessWidget {
-  final String hintText;
-  final TextEditingController controller;
-  const InputField({
-    super.key,
-    required this.hintText,
-    required this.controller,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-        width: double.infinity,
-        height: 58,
-        padding: const EdgeInsets.symmetric(horizontal: 16),
-        decoration: BoxDecoration(
-            border: Border.all(color: mainColor, width: 2),
-            color: Colors.white,
-            boxShadow: const [
-              BoxShadow(
-                  spreadRadius: 0.1,
-                  color: Colors.grey,
-                  blurRadius: 1,
-                  offset: Offset(0, 1))
-            ],
-            borderRadius: BorderRadius.circular(15)),
-        child: TextField(
-          controller: controller,
-          decoration: InputDecoration(
-            hintText: hintText,
-            hintStyle: const TextStyle(
-                fontWeight: FontWeight.w400, fontSize: 20, color: Colors.grey),
-            border: InputBorder.none,
-          ),
-        ));
-  }
-}
-
-class RoundedCameraButton extends StatelessWidget {
-  final String assetImagePath;
-  final VoidCallback onPressed;
-  const RoundedCameraButton({
-    super.key,
-    required this.onPressed,
-    required this.assetImagePath,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(
+Widget mainPageWidget({
+  required String text,
+  required String assetImagePath,
+  required VoidCallback onPressed,
+}) {
+  return Padding(
+    padding: const EdgeInsets.symmetric(horizontal: 35),
+    child: ElevatedButton(
+      onPressed: onPressed,
       style: ElevatedButton.styleFrom(
-        shape: const CircleBorder(
-          side: BorderSide.none,
-        ),
         backgroundColor: Colors.white,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
         surfaceTintColor: Colors.white,
       ),
-      onPressed: onPressed,
-      child: Image.asset(assetImagePath),
-    );
-  }
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 35),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Image.asset(assetImagePath),
+            Text(
+              text,
+              textAlign: TextAlign.center,
+              style: standart,
+              softWrap: true,
+            ),
+          ],
+        ),
+      ),
+    ),
+  );
+}
+
+Widget inputField({
+  required String hintText,
+  required TextEditingController controller,
+}) {
+  return Container(
+      width: double.infinity,
+      height: 58,
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      decoration: BoxDecoration(
+          border: Border.all(color: mainColor, width: 2),
+          color: Colors.white,
+          boxShadow: const [
+            BoxShadow(
+                spreadRadius: 0.1,
+                color: Colors.grey,
+                blurRadius: 1,
+                offset: Offset(0, 1))
+          ],
+          borderRadius: BorderRadius.circular(15)),
+      child: TextField(
+        controller: controller,
+        decoration: InputDecoration(
+          hintText: hintText,
+          hintStyle: const TextStyle(
+              fontWeight: FontWeight.w400, fontSize: 20, color: Colors.grey),
+          border: InputBorder.none,
+        ),
+      ));
+}
+
+Widget roundedCameraButton({
+  required String assetImagePath,
+  required VoidCallback onPressed,
+}) {
+  return ElevatedButton(
+    style: ElevatedButton.styleFrom(
+      shape: const CircleBorder(
+        side: BorderSide.none,
+      ),
+      backgroundColor: Colors.white,
+      surfaceTintColor: Colors.white,
+    ),
+    onPressed: onPressed,
+    child: Image.asset(assetImagePath),
+  );
 }
 
 getActions({
@@ -254,4 +220,40 @@ Future pickVideo({required ImageSource imageSource}) async {
 
   File videoTemporary = File(video.path);
   return videoTemporary;
+}
+
+Widget projectsOutputs({
+  required String title,
+  required Size size,
+  required String description,
+}) {
+  return Column(
+    children: [
+      Text(
+        title,
+        style: standart,
+      ),
+      const SizedBox(
+        height: 10,
+      ),
+      Container(
+          width: size.width,
+          height: size.width - 29 * 2,
+          margin: const EdgeInsets.all(5),
+          padding: const EdgeInsets.all(16),
+          decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(24),
+              boxShadow: [
+                BoxShadow(
+                    blurRadius: 5,
+                    color: Colors.grey.withOpacity(0.4),
+                    blurStyle: BlurStyle.solid)
+              ]),
+          child: Text(
+            description,
+            style: standart,
+          )),
+    ],
+  );
 }

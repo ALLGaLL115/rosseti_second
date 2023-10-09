@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:rosseti_second/main.dart';
-import 'package:rosseti_second/models/models.dart';
+import 'package:rosseti_second/data/models/models.dart';
 import 'package:rosseti_second/ui/pages/pages.dart';
+import 'package:rosseti_second/ui/widgets/projectCheckCard.dart';
 import 'package:video_player/video_player.dart';
 
 import '../../constants/constants.dart';
@@ -59,33 +59,33 @@ class _SuggestionDescriptionPageState extends State<SuggestionDescriptionPage> {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                CheckProjectCard(
-                  size: size,
-                  title: 'Сейчас так:',
-                  description: widget.suggestion.proposedSolutionText ?? "",
-                  networkImagePath: widget.suggestion.proposedSolutionImage ??
-                      "https://avatars.mds.yandex.net/i?id=3764ee6f3757f01ae5186486aa3f2bccd3c1d483-5220281-images-thumbs&n=13",
-                  networkVideoPath:
-                      widget.suggestion.existingSolutionVideo ?? "",
-                  videoPlayerController: _exetingVideoController,
-                ),
+                checkProjectCard(
+                    size: size,
+                    title: 'Сейчас так:',
+                    description: widget.suggestion.proposedSolutionText ?? "",
+                    networkImagePath: widget.suggestion.proposedSolutionImage ??
+                        "https://avatars.mds.yandex.net/i?id=3764ee6f3757f01ae5186486aa3f2bccd3c1d483-5220281-images-thumbs&n=13",
+                    networkVideoPath:
+                        widget.suggestion.existingSolutionVideo ?? "",
+                    videoPlayerController: _exetingVideoController,
+                    context: context),
                 const SizedBox(
                   height: 25,
                 ),
-                CheckProjectCard(
-                  size: size,
-                  title: 'Сейчас так:',
-                  description: widget.suggestion.proposedSolutionText ?? "",
-                  networkImagePath: widget.suggestion.proposedSolutionImage ??
-                      "https://avatars.mds.yandex.net/i?id=3764ee6f3757f01ae5186486aa3f2bccd3c1d483-5220281-images-thumbs&n=13",
-                  networkVideoPath:
-                      widget.suggestion.existingSolutionVideo ?? "",
-                  videoPlayerController: _proposedideoController,
-                ),
+                checkProjectCard(
+                    size: size,
+                    title: 'Сейчас так:',
+                    description: widget.suggestion.proposedSolutionText ?? "",
+                    networkImagePath: widget.suggestion.proposedSolutionImage ??
+                        "https://avatars.mds.yandex.net/i?id=3764ee6f3757f01ae5186486aa3f2bccd3c1d483-5220281-images-thumbs&n=13",
+                    networkVideoPath:
+                        widget.suggestion.existingSolutionVideo ?? "",
+                    videoPlayerController: _proposedideoController,
+                    context: context),
                 const SizedBox(
                   height: 25,
                 ),
-                ProjectsOutputs(
+                projectsOutputs(
                     title: "И тогда будет так :",
                     size: size,
                     description: widget.suggestion.positiveEffect ?? ""),
@@ -117,7 +117,7 @@ class _SuggestionDescriptionPageState extends State<SuggestionDescriptionPage> {
                     onRatingUpdate: (ratingValue) {}),
                 Padding(
                   padding: const EdgeInsets.all(5.0),
-                  child: ContinueButton(
+                  child: continueButton(
                       onPressed: () {
                         Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => const Conversation(),

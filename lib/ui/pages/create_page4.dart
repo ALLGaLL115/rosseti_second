@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:rosseti_second/constants/widgets.dart';
-import 'package:rosseti_second/models/models.dart';
+import 'package:rosseti_second/data/models/models.dart';
 import 'package:rosseti_second/ui/pages/pages.dart';
 
 import '../../constants/constants.dart';
-import '../../data_providers.dart';
+import '../../data/data_providers.dart';
 
 class CreatePage4 extends StatefulWidget {
   const CreatePage4({
@@ -67,7 +67,7 @@ class _CreatePage4State extends State<CreatePage4> {
                   const SizedBox(
                     height: 30,
                   ),
-                  ContinueButton(
+                  continueButton(
                       onPressed: () {
                         if (controller.text.isNotEmpty) {
                           SendSuggestion.addFrom4(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rosseti_second/constants/constants.dart';
-import 'package:rosseti_second/models/models.dart';
+import 'package:rosseti_second/data/models/models.dart';
 
 class StatusPage extends StatefulWidget {
   final Author user;
@@ -53,7 +53,7 @@ class _StatusPageState extends State<StatusPage> {
                 const SizedBox(
                   height: 10,
                 ),
-                ContinueButton(
+                continueButton(
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
