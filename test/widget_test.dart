@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:rosseti_second/constants/constants.dart';
+import 'package:rosseti_second/first/constants/constants.dart';
 import 'package:rosseti_second/ui/pages/pages.dart';
 
 void main() {
@@ -13,7 +13,7 @@ void main() {
       var text = find.text("Далее");
 
       await widgetTester.pumpWidget(const MaterialApp(
-        home: PhonePage(),
+        home: PhoneView(),
       ));
 
       await widgetTester.enterText(textField, "+7 (999) 234 34 54");

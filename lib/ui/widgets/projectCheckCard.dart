@@ -10,13 +10,11 @@ Widget checkProjectCard(
     required String? networkImagePath,
     required String networkVideoPath,
     required VideoPlayerController? videoPlayerController,
-    required Size size,
     required BuildContext context}) {
   return Column(children: [
     projectsOutputs(
       title: title,
       description: description,
-      size: size,
     ),
     const SizedBox(
       height: 8,

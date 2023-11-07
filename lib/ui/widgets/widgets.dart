@@ -1,9 +1,10 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:rosseti_second/constants/constants.dart';
-import 'package:rosseti_second/ui/pages/status_page.dart';
+import 'package:rosseti_second/strings.dart';
+import 'package:rosseti_second/ui/home/status_page.dart';
 
 Widget continueButton({
   required VoidCallback onPressed,
@@ -116,6 +117,7 @@ Widget mainPageWidget({
               text,
               textAlign: TextAlign.center,
               style: standart,
+              maxLines: 2,
               softWrap: true,
             ),
           ],
@@ -125,10 +127,10 @@ Widget mainPageWidget({
   );
 }
 
-Widget inputField({
-  required String hintText,
-  required TextEditingController controller,
-}) {
+Widget inputField(
+    {required String hintText,
+    // required TextEditingController controller,
+    required void onChange(String value)}) {
   return Container(
       width: double.infinity,
       height: 58,
@@ -145,7 +147,8 @@ Widget inputField({
           ],
           borderRadius: BorderRadius.circular(15)),
       child: TextField(
-        controller: controller,
+        // controller: controller,
+        onChanged: (value) => onChange(value),
         decoration: InputDecoration(
           hintText: hintText,
           hintStyle: const TextStyle(
@@ -180,15 +183,10 @@ getActions({
         padding: const EdgeInsets.all(8.0),
         child: TextButton(
           onPressed: () async {
-            var user = Globals().user;
-
-            if (user != null) {
-              Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => StatusPage(
-                  user: user,
-                ),
-              ));
-            }
+            // Navigator.of(context).push(MaterialPageRoute(
+            //   builder: (context) => StatusPage(),
+            // ));
+            //
           },
           child: Image.asset(
             "assets/images/image 1.png",
@@ -225,7 +223,6 @@ Future pickVideo({required ImageSource imageSource}) async {
 
 Widget projectsOutputs({
   required String title,
-  required Size size,
   required String description,
 }) {
   return Column(
@@ -238,8 +235,6 @@ Widget projectsOutputs({
         height: 10,
       ),
       Container(
-          width: size.width,
-          height: size.width - 29 * 2,
           margin: const EdgeInsets.all(5),
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(

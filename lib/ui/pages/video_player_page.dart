@@ -1,6 +1,5 @@
 import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
-import 'package:rosseti_second/constants/constants.dart';
 import 'package:video_player/video_player.dart';
 
 class VideoPage extends StatefulWidget {
@@ -51,7 +50,7 @@ class _VideoPageState extends State<VideoPage> {
       body: Center(
         child: Container(
             margin: EdgeInsets.all(16),
-            height: Globals().size.height / 3,
+            height: 300,
             child: Stack(
               children: [
                 GestureDetector(
