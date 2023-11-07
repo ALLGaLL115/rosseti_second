@@ -3,7 +3,7 @@ import 'package:rosseti_second/data/models/models.dart';
 import 'package:rosseti_second/ui/pages/pages.dart';
 
 import '../../constants/constants.dart';
-import '../../constants/widgets.dart';
+import '../widgets/widgets.dart';
 
 class CreatePage1 extends StatefulWidget {
   const CreatePage1({

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
-import '../../constants/widgets.dart';
+import 'widgets.dart';
 import '../pages/video_player_page.dart';
 
 Widget checkProjectCard(

@@ -15,7 +15,8 @@ Widget continueButton({
     decoration: BoxDecoration(
         color: Colors.white,
         boxShadow: [
-          BoxShadow(offset: Offset(0, 0.3), blurRadius: 0.11, spreadRadius: 0)
+          const BoxShadow(
+              offset: Offset(0, 0.3), blurRadius: 0.11, spreadRadius: 0)
         ],
         borderRadius: BorderRadius.circular(24)),
     child: FilledButton(

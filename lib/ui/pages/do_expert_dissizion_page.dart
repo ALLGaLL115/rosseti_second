@@ -3,7 +3,7 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:video_player/video_player.dart';
 
 import '../../constants/constants.dart';
-import '../../constants/widgets.dart';
+import '../widgets/widgets.dart';
 import '../../data/models/models.dart';
 import '../widgets/projectCheckCard.dart';
 import 'conversation_page.dart';

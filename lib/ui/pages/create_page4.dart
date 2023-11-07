@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rosseti_second/constants/widgets.dart';
+import 'package:rosseti_second/ui/widgets/widgets.dart';
 import 'package:rosseti_second/data/models/models.dart';
 import 'package:rosseti_second/ui/pages/pages.dart';
 
