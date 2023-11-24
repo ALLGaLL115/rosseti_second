@@ -32,7 +32,7 @@ class SuggestionAdapter extends TypeAdapter<Suggestion> {
       registrationNumber: fields[12] as dynamic,
       rating: fields[13] as int?,
       experted: fields[14] as int?,
-      author: fields[15] as Suggestion?,
+      author: fields[15] as User?,
       comments: (fields[16] as List?)?.cast<Comment>(),
     );
   }

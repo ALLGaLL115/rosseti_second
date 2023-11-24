@@ -18,7 +18,7 @@ class TopicAdapter extends TypeAdapter<Topic> {
     };
     return Topic(
       id: fields[0] as int?,
-      title: fields[1] as String?,
+      title: fields[1] as String,
     );
   }
 

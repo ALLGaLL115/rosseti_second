@@ -7,10 +7,10 @@ class Topic extends HiveObject {
   @HiveField(0)
   late int? id;
   @HiveField(1)
-  late String? title;
+  late String title;
   Topic({
     this.id,
-    this.title,
+    required this.title,
   });
 
   Topic copyWith({

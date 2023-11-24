@@ -42,7 +42,7 @@ class Suggestion {
   @HiveField(14)
   late int? experted;
   @HiveField(15)
-  late Suggestion? author;
+  late User? author;
   @HiveField(16)
   late List<Comment>? comments;
 
@@ -82,7 +82,7 @@ class Suggestion {
     dynamic registrationNumber,
     int? rating,
     int? experted,
-    Suggestion? author,
+    User? author,
     List<Comment>? comments,
   }) =>
       Suggestion(
@@ -125,8 +125,7 @@ class Suggestion {
         registrationNumber: json["registration_number"],
         rating: json["rating"],
         experted: json["experted"],
-        author:
-            json["author"] == null ? null : Suggestion.fromJson(json["author"]),
+        author: json["author"] == null ? null : User.fromJson(json["author"]),
         comments: json["comments"] == null
             ? []
             : List<Comment>.from(

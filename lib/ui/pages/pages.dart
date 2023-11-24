@@ -1,14 +1,8 @@
 // export 'sms.page.dart';
-export '../home/home_page.dart';
+export 'home/home_page.dart';
 // export 'phone_page.dart';
-export '../auth_and_registration/start_page.dart';
-export '../home/status_page.dart';
-export '../create_project/create_page1.dart';
-export '../create_project/create_page2.dart';
-export '../create_project/create_page3.dart';
-export '../create_project/create_page4.dart';
+export 'home/status_page.dart';
+export 'create_project/create_page1.dart';
 export 'projects_page.dart';
-export 'conversation_page.dart';
+export 'projects_pages/chat_page.dart';
 export 'projects_description_page.dart';
-export 'suggestion_disision_page.dart';
-export 'suggestions.dart';

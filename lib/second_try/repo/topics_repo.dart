@@ -4,15 +4,19 @@ import 'package:rosseti_second/second_try/providers/data_providers.dart';
 
 class TopicsRepository {
   final DataProviders dataProviders = DataProviders();
-  Future<List<Topic>> getTopics() async {
-    final token = Boxes.getTokenBox().values.single;
-    final topics = await dataProviders.getTopics(token: token);
+  final topicsBox = Boxes.getTopicsBox();
+
+  Future getTopics() async {
+    final topics = await dataProviders.getTopics();
     return topics;
   }
 
   saveTopics(List<Topic> topics) {
-    final topicsBox = Boxes.getTopicsBox();
     topicsBox.clear();
-    topicsBox.add(topics);
+    topicsBox.addAll(topics);
+  }
+
+  clear() {
+    topicsBox.clear();
   }
 }

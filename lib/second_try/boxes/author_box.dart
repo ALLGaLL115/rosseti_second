@@ -1,5 +1,4 @@
 import 'package:hive/hive.dart';
-import 'package:rosseti_second/second_try/models/suggestion_model.dart';
 import 'package:rosseti_second/second_try/models/user_model.dart';
 
 class AuthorBox {

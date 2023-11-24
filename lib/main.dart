@@ -1,15 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rosseti_second/second_try/blocs/sing_in_bloc/sing_in_bloc.dart';
+import 'package:rosseti_second/second_try/blocs/done/create_project_bloc/create_project_bloc.dart';
+import 'package:rosseti_second/second_try/blocs/done/sing_in_bloc/sing_in_bloc.dart';
+import 'package:rosseti_second/second_try/blocs/suggestion_ckeck_bloc/suggestion_check_bloc.dart';
+import 'package:rosseti_second/second_try/blocs/suggestions_bloc/suggestion_bloc.dart';
+import 'package:rosseti_second/second_try/boxes.dart';
 import 'package:rosseti_second/second_try/models/comment_model.dart';
-import 'package:rosseti_second/second_try/models/suggestion_model.dart';
 import 'package:rosseti_second/second_try/models/topic_model.dart';
 import 'package:rosseti_second/second_try/models/user_model.dart';
-import 'package:rosseti_second/second_try/repo/sing_in_repo.dart';
+import 'package:rosseti_second/second_try/providers/auth_providers.dart';
+import 'package:rosseti_second/second_try/providers/projects_provider.dart';
 import 'package:rosseti_second/strings.dart';
+import 'package:rosseti_second/ui/pages/auth_and_registration/authetication.dart';
+// lib\ui\pages\auth_and_registration\
 // import 'package:rosseti_second/data/repositories/repository.dart';
 import 'ui/pages/pages.dart';
-import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 void main() async {
@@ -20,54 +26,44 @@ void main() async {
   await Hive.initFlutter();
   Hive.registerAdapter(CommentAdapter());
   Hive.registerAdapter(UserAdapter());
-  Hive.registerAdapter(SuggestionAdapter());
+  // Hive.registerAdapter(SuggestionAdapter());
   Hive.registerAdapter(TopicAdapter());
 
   // await Hive.openBox("tokenBox");
   await Hive.openBox<User>("userBox");
-  await Hive.openBox<List<Topic>>("topics");
+  await Hive.openBox<Topic>("topics");
   await Hive.openBox<String>("tokenBox");
   // await Hive.openBox<Comment>("commentsBox");
   // await Hive.openBox<Suggestion>("suggestionBox");
 
-  runApp(const MyApp());
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
+      .then((_) {
+    runApp(MyApp());
+  });
 }
 
-class MyApp extends StatefulWidget {
-  const MyApp({super.key});
-
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  @override
-  Widget build(BuildContext context) {
-    return MyAppView();
-  }
-}
-
-class MyAppView extends StatelessWidget {
-  MyAppView({
+class MyApp extends StatelessWidget {
+  MyApp({
     super.key,
   });
 
-  final SingInRepo _singInRepo = SingInRepo();
-
   @override
   Widget build(BuildContext context) {
-    return MultiRepositoryProvider(
+    return MultiBlocProvider(
       providers: [
-        RepositoryProvider<SingInRepo>.value(value: _singInRepo),
+        BlocProvider(
+          create: (_) =>
+              SingInBloc(autheticatoinProviders: AutheticatoinProviders()),
+        ),
+        BlocProvider(
+          create: (_) => CreateProjectBloc(),
+        ),
+        BlocProvider(
+            create: (_) =>
+                SuggestionBloc(projectsProvider: ProjectsProvider())),
+        BlocProvider(create: (_) => SuggestionCheckBloc()),
       ],
-      child: MultiBlocProvider(
-        providers: [
-          BlocProvider(
-              create: (context) => SingInBloc(
-                    singInRepo: _singInRepo,
-                  ))
-        ],
-        child: MaterialApp(
+      child: MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Flutter Demo',
           theme: ThemeData(
@@ -90,11 +86,18 @@ class MyAppView extends StatelessWidget {
               toolbarHeight: 100,
             ),
           ),
+          home: ValueListenableBuilder(
+            valueListenable: Boxes.getTokenBox().listenable(),
+            builder: (context, box, __) {
+              if (box.isEmpty) {
+                return const AutheticationPage();
+              } else {
+                // box.clear();
+                return MainView();
+              }
+            },
+          )
 
-          home: const StartPage(),
-
-          // switch (state) {
-          //   case :
           //     return StartPage(
 
           //     );
@@ -114,8 +117,7 @@ class MyAppView extends StatelessWidget {
           //       child: CircularProgressIndicator(),
           //     );
           // }
-        ),
-      ),
+          ),
     );
   }
 }
@@ -125,7 +127,7 @@ class SplashPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Center(child: CircularProgressIndicator()),
     );
   }

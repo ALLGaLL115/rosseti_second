@@ -4,9 +4,8 @@ import 'package:rosseti_second/second_try/providers/data_providers.dart';
 
 class UserRepository {
   final DataProviders dataProviders = DataProviders();
-  Future getUser() async {
-    final token = Boxes.getTokenBox().values.single;
-    final user = await dataProviders.getUser(token);
+  Future<User> getUser() async {
+    final user = await dataProviders.getUser();
     return user;
   }
 

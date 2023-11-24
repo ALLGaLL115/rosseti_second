@@ -1,86 +1,34 @@
-import 'dart:io';
+export 'chat_widgets/chat_card.dart';
+export 'chat_widgets/chat_group_separator.dart';
+export 'chat_widgets/chat_input.dart';
+export 'comon_widgets/continue_button.dart';
+export 'projects_widgest/desizion_button.dart';
+export 'home_widget.dart';
+export 'creatingWidgets/image_widget.dart';
+export 'creatingWidgets/input_field_large.dart';
+export 'comon_widgets/input_field_with_border.dart';
+export 'projects_widgest/project_card.dart';
+export 'projects_widgest/projectCheckCard.dart';
+export 'projects_widgest/rating.dart';
+export 'creatingWidgets/take_photo_button.dart';
+export 'creatingWidgets/take_video_button.dart';
+export 'creatingWidgets/topics_widget.dart';
+export 'creatingWidgets/video_widget.dart';
+export 'comon_widgets/input_field.dart';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:rosseti_second/strings.dart';
-import 'package:rosseti_second/ui/home/status_page.dart';
-
-Widget continueButton({
-  required VoidCallback onPressed,
-  required String text,
-}) {
-  return Container(
-    width: double.infinity,
-    height: 58,
-    decoration: BoxDecoration(
-        color: Colors.white,
-        boxShadow: [
-          const BoxShadow(
-              offset: Offset(0, 0.3), blurRadius: 0.11, spreadRadius: 0)
-        ],
-        borderRadius: BorderRadius.circular(24)),
-    child: FilledButton(
-      style: FilledButton.styleFrom(
-          backgroundColor: Colors.white,
-          surfaceTintColor: Colors.white,
-          shadowColor: Colors.black),
-      onPressed: onPressed,
-      child: Text(
-        text,
-        style: standart,
-      ),
-    ),
-  );
-}
-
-class UsersPicture extends StatelessWidget {
-  const UsersPicture({
-    super.key,
-    required this.image,
-    required this.assetHintPicture,
-    required this.heroTag,
-  });
-  final String assetHintPicture;
-  final Image? image;
-  final String heroTag;
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        if (image != null) {
-          Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => HeroPage(
-                    image: image!,
-                    heroTag: heroTag,
-                  )));
-        }
-      },
-      child: SizedBox(
-        height: 58,
-        width: 91,
-        child: Hero(
-            tag: heroTag,
-            child: image ??
-                Image.asset(
-                  assetHintPicture,
-                  height: 50,
-                )),
-      ),
-    );
-  }
-}
+import 'package:rosseti_second/ui/pages/home/status_page.dart';
 
 class HeroPage extends StatelessWidget {
   final String heroTag;
+  final Image image;
   const HeroPage({
     super.key,
     required this.image,
     required this.heroTag,
   });
-
-  final Image image;
 
   @override
   Widget build(BuildContext context) {
@@ -91,71 +39,6 @@ class HeroPage extends StatelessWidget {
       ),
     );
   }
-}
-
-Widget mainPageWidget({
-  required String text,
-  required String assetImagePath,
-  required VoidCallback onPressed,
-}) {
-  return Padding(
-    padding: const EdgeInsets.symmetric(horizontal: 35),
-    child: ElevatedButton(
-      onPressed: onPressed,
-      style: ElevatedButton.styleFrom(
-        backgroundColor: Colors.white,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
-        surfaceTintColor: Colors.white,
-      ),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 35),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Image.asset(assetImagePath),
-            Text(
-              text,
-              textAlign: TextAlign.center,
-              style: standart,
-              maxLines: 2,
-              softWrap: true,
-            ),
-          ],
-        ),
-      ),
-    ),
-  );
-}
-
-Widget inputField(
-    {required String hintText,
-    // required TextEditingController controller,
-    required void onChange(String value)}) {
-  return Container(
-      width: double.infinity,
-      height: 58,
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-      decoration: BoxDecoration(
-          border: Border.all(color: mainColor, width: 2),
-          color: Colors.white,
-          boxShadow: const [
-            BoxShadow(
-                spreadRadius: 0.1,
-                color: Colors.grey,
-                blurRadius: 1,
-                offset: Offset(0, 1))
-          ],
-          borderRadius: BorderRadius.circular(15)),
-      child: TextField(
-        // controller: controller,
-        onChanged: (value) => onChange(value),
-        decoration: InputDecoration(
-          hintText: hintText,
-          hintStyle: const TextStyle(
-              fontWeight: FontWeight.w400, fontSize: 20, color: Colors.grey),
-          border: InputBorder.none,
-        ),
-      ));
 }
 
 Widget roundedCameraButton({
@@ -183,10 +66,9 @@ getActions({
         padding: const EdgeInsets.all(8.0),
         child: TextButton(
           onPressed: () async {
-            // Navigator.of(context).push(MaterialPageRoute(
-            //   builder: (context) => StatusPage(),
-            // ));
-            //
+            Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => StatusPage(),
+            ));
           },
           child: Image.asset(
             "assets/images/image 1.png",
@@ -209,16 +91,14 @@ Future pickImage({required ImageSource imageSource}) async {
   final image = await ImagePicker().pickImage(source: imageSource);
   if (image == null) return;
 
-  final imageTemporary = File(image.path);
-  return imageTemporary;
+  return image.path;
 }
 
 Future pickVideo({required ImageSource imageSource}) async {
   final video = await ImagePicker().pickVideo(source: imageSource);
   if (video == null) return;
 
-  File videoTemporary = File(video.path);
-  return videoTemporary;
+  return video.path;
 }
 
 Widget projectsOutputs({

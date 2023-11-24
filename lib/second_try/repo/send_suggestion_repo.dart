@@ -4,7 +4,8 @@ import 'package:rosseti_second/second_try/providers/send_suggestion_provider.dar
 class CreateSuggestionRepo {
   final SendSuggestionProvider _sendSuggestionProvider =
       SendSuggestionProvider();
-  Future sendSuggestion(CreateSuggestionModel suggestionModel) async {
+
+  Future<bool> sendSuggestion(CreateSuggestionModel suggestionModel) async {
     bool result = await _sendSuggestionProvider.sendSuggestion(
         suggestionModel: suggestionModel);
     return result;
