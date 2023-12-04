@@ -1,5 +1,4 @@
 import 'package:bloc/bloc.dart';
-import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:rosseti_second/second_try/boxes.dart';
 import 'package:rosseti_second/second_try/models/send_suggestion.dart';
@@ -31,29 +30,5 @@ class PostSuggestionBloc
     });
     on<ResetPostingEvent>((event, emit) =>
         emit(state.copyWith(status: PostingStatus.initial, error: null)));
-    // on<PostSuggestionEvent>(
-    //   (event, emit) async {
-    //     emit(state.copyWith(sendStatus: SuggestionSendStatus.loading));
-    //     try {
-    //       await _sendSuggestionProvider.sendSuggestion(
-    //           suggestionModel: SuggestionSendModel(
-    //               title: state.title,
-    //               topicId: Boxes.getTopicsBox()
-    //                   .values
-    //                   .firstWhere((element) => element.title == state.topic)
-    //                   .id!,
-    //               existingSolutionText: state.existingSolutionText,
-    //               existingSolutionImage: state.existingSolutionImage,
-    //               existingSolutionVideo: state.existingSolutionVideo,
-    //               proposedSolutionText: state.proposedSolutionText,
-    //               proposedSolutionImage: state.proposedSolutionImage,
-    //               proposedSolutionVideo: state.proposedSolutionVideo,
-    //               positiveEffect: state.positiveEffect));
-    //       emit(state.copyWith(sendStatus: SuggestionSendStatus.success));
-    //     } catch (e) {
-    //       emit(state.copyWith(sendStatus: SuggestionSendStatus.error));
-    //     }
-    //   },
-    // );
   }
 }

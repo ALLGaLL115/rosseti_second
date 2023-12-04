@@ -10,7 +10,7 @@ sealed class PostingSuggestionEvent extends Equatable {
 final class PostSuggestion extends PostingSuggestionEvent {
   final SuggestionSendModel suggestionSendModel;
 
-  PostSuggestion({required this.suggestionSendModel});
+  const PostSuggestion({required this.suggestionSendModel});
 }
 
 final class ResetPostingEvent extends PostingSuggestionEvent {}

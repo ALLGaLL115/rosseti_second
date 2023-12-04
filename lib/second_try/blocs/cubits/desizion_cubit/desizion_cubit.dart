@@ -7,7 +7,7 @@ import 'package:rosseti_second/second_try/providers/expert_disizion.dart';
 part 'desizion_state.dart';
 
 class DesizionCubit extends Cubit<DesizionState> {
-  late ExpertDesizionProviders _desizionProviders;
+  late final ExpertDesizionProviders _desizionProviders;
   DesizionCubit({required ExpertDesizionProviders desizionProviders})
       : _desizionProviders = desizionProviders,
         super(DesizionInitial());

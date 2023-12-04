@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:rosseti_second/second_try/blocs/load_suggestions_bloc/load_suggestions_bloc.dart';
+import 'package:rosseti_second/second_try/blocs/suggestion_blocs/load_suggestions_bloc/load_suggestions_bloc.dart';
 import 'package:rosseti_second/second_try/providers/projects_provider.dart';
 import 'package:rosseti_second/strings.dart';
 import 'package:rosseti_second/ui/pages/pages.dart';

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rosseti_second/strings.dart';
+import 'package:rosseti_second/text_styles.dart';
 
 mainPageWidget({
   required String text,
@@ -7,7 +8,7 @@ mainPageWidget({
   required VoidCallback onPressed,
 }) {
   return Padding(
-    padding: const EdgeInsets.symmetric(horizontal: 35),
+    padding: const EdgeInsets.symmetric(horizontal: 16),
     child: ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
@@ -24,7 +25,7 @@ mainPageWidget({
             Text(
               text,
               textAlign: TextAlign.center,
-              style: standart,
+              style: basicTextStyle,
               maxLines: 2,
               softWrap: true,
             ),

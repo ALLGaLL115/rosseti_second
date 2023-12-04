@@ -63,14 +63,14 @@ class AutheticationView extends StatelessWidget {
                                 ),
                                 Text(
                                   stringsUi['appName']!,
-                                  style: const TextStyle(
-                                      color: mainColor,
-                                      fontSize: 62,
-                                      fontWeight: FontWeight.w400),
+                                  // style: const TextStyle(
+                                  //     color: mainColor,
+                                  //     fontSize: 62,
+                                  //     fontWeight: FontWeight.w400),
                                 ),
                                 Text(
                                   stringsUi["innovator"]!,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       color: Colors.black,
                                       fontSize: 20,
                                       fontWeight: FontWeight.w400),
@@ -122,9 +122,9 @@ class AutheticationView extends StatelessWidget {
                                           },
                                           text: stringsUi["further"]!);
                                     case GetCodeStatus.loading:
-                                      return CircularProgressIndicator();
+                                      return const CircularProgressIndicator();
                                     case GetCodeStatus.success:
-                                      return Icon(
+                                      return const Icon(
                                         Icons.done,
                                         color: Colors.green,
                                       );
@@ -170,9 +170,9 @@ class AutheticationView extends StatelessWidget {
                                           },
                                           text: stringsUi["done"]!);
                                     case GetTokenStatus.loading:
-                                      return CircularProgressIndicator();
+                                      return const CircularProgressIndicator();
                                     case GetTokenStatus.success:
-                                      return Icon(
+                                      return const Icon(
                                         Icons.done,
                                         size: 20,
                                         color: Colors.green,

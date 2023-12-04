@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rosseti_second/second_try/blocs/cubits/expertize_cubit/expertise_cubit.dart';
 import 'package:rosseti_second/strings.dart';
+import 'package:rosseti_second/text_styles.dart';
 import 'package:rosseti_second/ui/pages/create_page1.dart';
 import 'package:rosseti_second/ui/pages/pages.dart';
 import 'package:rosseti_second/ui/widgets/widgets.dart';
@@ -30,7 +31,7 @@ import 'package:rosseti_second/ui/widgets/widgets.dart';
 // }
 
 class MainView extends StatelessWidget {
-  MainView({
+  const MainView({
     super.key,
   });
 
@@ -41,7 +42,6 @@ class MainView extends StatelessWidget {
         appBar: AppBar(
           title: Text(
             stringsUi["appName"]!,
-            style: standart,
           ),
           actions: getActions(context: context),
         ),

@@ -7,6 +7,7 @@ import 'package:rosseti_second/second_try/models/send_suggestion.dart';
 
 import 'package:rosseti_second/second_try/providers/send_suggestion_provider.dart';
 import 'package:rosseti_second/strings.dart';
+import 'package:rosseti_second/text_styles.dart';
 import 'package:rosseti_second/ui/pages/home_page.dart';
 import '../widgets/widgets.dart';
 
@@ -36,7 +37,6 @@ class CreatingView extends StatelessWidget {
       child: BlocBuilder<CreatingSuggestionBloc, CreatingSuggestionState>(
         builder: (context, state) {
           final bloc = context.watch<CreatingSuggestionBloc>();
-          final box = Boxes.getTopicsBox();
 
           return GestureDetector(
               onTap: () => FocusScope.of(context).unfocus(),
@@ -79,14 +79,14 @@ class CreatingView extends StatelessWidget {
                                 children: [
                                   Text(
                                     stringsUi['tellAboutOffer']!,
-                                    style: standart,
+                                    style: basicTextStyle,
                                   ),
                                   const SizedBox(
                                     height: 35,
                                   ),
                                   Text(
                                     stringsUi['chooseThemeAndName']!,
-                                    style: standart,
+                                    style: basicTextStyle,
                                   ),
                                   const SizedBox(
                                     height: 35,
@@ -163,7 +163,8 @@ class CreatingView extends StatelessWidget {
                                 key: _formSecondKey,
                                 child: Column(
                                   children: [
-                                    Text(stringsUi['howItsNow']!),
+                                    Text(stringsUi['howItsNow']!,
+                                        style: basicTextStyle),
                                     TextFormField(
                                       minLines: 10,
                                       maxLines: 10,
@@ -181,7 +182,7 @@ class CreatingView extends StatelessWidget {
                                     ),
                                     Text(
                                       stringsUi["addPhotoOrVideo"]!,
-                                      style: standart,
+                                      style: basicTextStyle,
                                     ),
                                     Row(
                                       mainAxisAlignment:
@@ -249,7 +250,8 @@ class CreatingView extends StatelessWidget {
                                 key: _formThirdKey,
                                 child: Column(
                                   children: [
-                                    Text(stringsUi['howItsShouldBe']!),
+                                    Text(stringsUi['howItsShouldBe']!,
+                                        style: basicTextStyle),
                                     TextFormField(
                                       minLines: 10,
                                       maxLines: 10,
@@ -267,7 +269,7 @@ class CreatingView extends StatelessWidget {
                                     ),
                                     Text(
                                       stringsUi['addPhotoOrVideo']!,
-                                      style: standart,
+                                      style: basicTextStyle,
                                     ),
                                     Row(
                                       children: [
@@ -341,7 +343,10 @@ class CreatingView extends StatelessWidget {
                                           context.watch<PostSuggestionBloc>();
                                       return Column(
                                         children: [
-                                          Text(stringsUi['howItsWillBe']!),
+                                          Text(
+                                            stringsUi['howItsWillBe']!,
+                                            style: basicTextStyle,
+                                          ),
                                           TextFormField(
                                             minLines: 10,
                                             maxLines: 10,
@@ -400,9 +405,9 @@ class CreatingView extends StatelessWidget {
                                                     text: stringsUi['done']!);
 
                                               case PostingStatus.loading:
-                                                return CircularProgressIndicator();
+                                                return const CircularProgressIndicator();
                                               case PostingStatus.success:
-                                                return Icon(
+                                                return const Icon(
                                                   Icons.done,
                                                   color: Colors.green,
                                                 );
@@ -447,7 +452,7 @@ class CreatingView extends StatelessWidget {
                                                                   MaterialPageRoute(
                                                                       builder:
                                                                           (context) =>
-                                                                              MainView()),
+                                                                              const MainView()),
                                                                   (route) =>
                                                                       false);
                                                           bloc.add(

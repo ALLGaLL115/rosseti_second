@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rosseti_second/colors.dart';
 import 'package:rosseti_second/strings.dart';
 
 class InputLargeField extends StatelessWidget {
@@ -33,7 +34,7 @@ inputFieldLarge(
       ),
       Container(
         padding: const EdgeInsets.all(8),
-        margin: EdgeInsets.symmetric(vertical: 8),
+        margin: const EdgeInsets.symmetric(vertical: 8),
         decoration: BoxDecoration(
           border: Border.all(color: mainColor, width: 2),
           borderRadius: BorderRadius.circular(15),

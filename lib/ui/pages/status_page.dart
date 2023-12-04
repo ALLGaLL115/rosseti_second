@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:rosseti_second/second_try/boxes.dart';
 import 'package:rosseti_second/strings.dart';
+import 'package:rosseti_second/text_styles.dart';
 import 'package:rosseti_second/ui/widgets/comon_widgets/continue_button.dart';
 import 'package:rosseti_second/ui/widgets/widgets.dart';
 
@@ -49,7 +50,7 @@ class _StatusPageState extends State<StatusPage> {
                       // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Image.asset("assets/images/crowns 1.png"),
-                        Text(stringsUi["silverStatus"]!, style: standart),
+                        Text(stringsUi["silverStatus"]!, style: basicTextStyle),
                         statusTextLine(
                             stringsUi["ratings"]!, '${user.ratingsCount}'),
                         statusTextLine(
@@ -58,15 +59,22 @@ class _StatusPageState extends State<StatusPage> {
                             stringsUi["offers"]!, '${user.proposalsCount}'),
                         statusTextLine(stringsUi["approved"]!,
                             '${user.acceptedProposalsCount}'),
+                        SizedBox(
+                          height: 22,
+                        ),
                         Text(
                           "${stringsUi['totalBonuses']!} 1300",
                           // "total bonuses 1300\n",
-                          style: standart,
+                          style: basicTextStyle,
+                        ),
+                        SizedBox(
+                          height: 22,
                         ),
 
                         RichText(
                             maxLines: 5,
                             text: TextSpan(
+                              style: basicTextStyle,
                               text:
                                   "${stringsUi['beforeTheGoldenStatusIsStill']} ${user.ratingsCount} ${stringsUi['ratings']!.toLowerCase()} ${stringsUi['or']!.toLowerCase()} ${user.commentsCount} ${stringsUi['comments']} ${stringsUi['or']} ${user.proposalsCount} ${stringsUi['proposal']}",
                             )),
@@ -76,7 +84,7 @@ class _StatusPageState extends State<StatusPage> {
                       ]);
                   return child;
                 } else {
-                  child = Center(
+                  child = const Center(
                     child: CircularProgressIndicator(),
                   );
                   return child;
@@ -102,12 +110,12 @@ class _StatusPageState extends State<StatusPage> {
       children: [
         Text(
           text,
-          style: standart,
+          style: basicTextStyle,
         ),
         const Spacer(),
         Text(
           value,
-          style: standart,
+          style: basicTextStyle,
         )
       ],
     );

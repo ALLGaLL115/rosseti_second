@@ -6,7 +6,7 @@ import 'package:rosseti_second/second_try/providers/comment_provider.dart';
 part 'comments_state.dart';
 
 class CommentsCubit extends Cubit<CommentsState> {
-  late CommentProvider _commentProvider;
+  late final CommentProvider _commentProvider;
   CommentsCubit({required CommentProvider commentProvider})
       : _commentProvider = commentProvider,
         super(const CommentsState(comments: [], comment: ''));
@@ -16,13 +16,15 @@ class CommentsCubit extends Cubit<CommentsState> {
   }
 
   sendComment({required int suggestionId, required String text}) async {
-    final res = await _commentProvider.addComment(
-        text: text, suggestionId: suggestionId);
+    if (text.isNotEmpty) {
+      final res = await _commentProvider.addComment(
+          text: text, suggestionId: suggestionId);
 
-    res.fold(
-        (l) => null,
-        (r) => emit(state.copyWith(
-              comments: r,
-            )));
+      res.fold(
+          (l) => null,
+          (r) => emit(state.copyWith(
+                comments: r,
+              )));
+    }
   }
 }

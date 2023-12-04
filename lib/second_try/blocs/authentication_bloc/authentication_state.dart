@@ -42,7 +42,6 @@ class AuthenticationState extends Equatable {
           codeForCheck: codeForCheck ?? this.codeForCheck);
 
   @override
-  // TODO: implement props
   List<Object?> get props => [
         codeStatus,
         tokenStatus,

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:rosseti_second/colors.dart';
 import 'package:rosseti_second/second_try/boxes.dart';
 import 'package:rosseti_second/second_try/models/suggestion_model.dart';
 import 'package:rosseti_second/strings.dart';
+import 'package:rosseti_second/text_styles.dart';
 
 projectCard({required Suggestion suggestion, required Function() onTap}) {
   return GestureDetector(
@@ -31,8 +33,8 @@ projectCard({required Suggestion suggestion, required Function() onTap}) {
                           image: NetworkImage(
                             suggestion.existingSolutionImage!,
                           ))
-                      : DecorationImage(
-                          image: const AssetImage("assets/images/img.png"))),
+                      : const DecorationImage(
+                          image: AssetImage("assets/images/img.png"))),
             ),
             const Spacer(),
             SizedBox(
@@ -41,13 +43,10 @@ projectCard({required Suggestion suggestion, required Function() onTap}) {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   Text(suggestion.title ?? stringsUi['naming']!,
-                      style: standart, overflow: TextOverflow.ellipsis),
+                      style: basicTextStyle, overflow: TextOverflow.ellipsis),
                   const Spacer(),
-                  Text(
-                    suggestion.author!.fullName ?? stringsUi["empty"]!,
-                    style:
-                        const TextStyle(fontSize: 14, color: Color(0xffA1A1A1)),
-                  ),
+                  Text(suggestion.author!.fullName ?? stringsUi["empty"]!,
+                      style: basicSmallGreyTextStyle),
                   Text(
                       Boxes.getTopicsBox()
                           .values
@@ -55,7 +54,7 @@ projectCard({required Suggestion suggestion, required Function() onTap}) {
                           .elementAt(suggestion.topicId! - 1)
                           .id
                           .toString(),
-                      style: const TextStyle(fontSize: 14, color: mainColor))
+                      style: basicSmallTextStyle)
                 ],
               ),
             )

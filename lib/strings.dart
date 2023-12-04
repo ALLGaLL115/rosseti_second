@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-const mainColor = Colors.blue;
+// const mainColor = Colors.blue;
 // keys
 const String tokenKey = "tokenKey";
 

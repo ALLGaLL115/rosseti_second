@@ -1,6 +1,5 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:rosseti_second/strings.dart';
 import 'package:rosseti_second/ui/widgets/widgets.dart';
 
 imageWidget(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rosseti_second/colors.dart';
 import 'package:rosseti_second/strings.dart';
 
 desizionButton({required Function() onAgree, required Function() onDisagree}) {

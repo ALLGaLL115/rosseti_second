@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
-import 'package:video_thumbnail/video_thumbnail.dart';
 
 videoWidget({
   required BuildContext context,
@@ -16,7 +15,7 @@ videoWidget({
         if (videoPath != null) {
           Navigator.of(context).push(MaterialPageRoute(
               builder: (context) =>
-                  VideoPlayer(VideoPlayerController.file(File(videoPath!)))));
+                  VideoPlayer(VideoPlayerController.file(File(videoPath)))));
         }
       },
       child: Column(

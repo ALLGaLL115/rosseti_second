@@ -1,11 +1,11 @@
 import 'package:bloc/bloc.dart';
-import 'package:equatable/equatable.dart';
+
 import 'package:flutter/material.dart';
 import 'package:rosseti_second/second_try/providers/rating_providers.dart';
 import 'package:rosseti_second/ui/pages/chat_page.dart';
 
 class RatingCubit extends Cubit<int> {
-  late RatingProvider _raringProvider;
+  late final RatingProvider _raringProvider;
   RatingCubit({required RatingProvider ratingProvider})
       : _raringProvider = ratingProvider,
         super(0);

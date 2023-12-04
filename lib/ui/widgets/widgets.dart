@@ -8,7 +8,7 @@ export 'creatingWidgets/image_widget.dart';
 export 'creatingWidgets/input_field_large.dart';
 export 'comon_widgets/input_field_with_border.dart';
 export 'projects_widgest/project_card.dart';
-export 'projects_widgest/projectCheckCard.dart';
+export 'projects_widgest/project_сheck_сard.dart';
 export 'projects_widgest/rating.dart';
 export 'creatingWidgets/take_photo_button.dart';
 export 'creatingWidgets/take_video_button.dart';
@@ -68,7 +68,7 @@ getActions({
         child: TextButton(
           onPressed: () async {
             Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => StatusPage(),
+              builder: (context) => const StatusPage(),
             ));
           },
           child: Image.asset(

@@ -1,8 +1,6 @@
 import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
-import 'package:rosseti_second/strings.dart';
-
-import '../../../second_try/models/message.dart';
+import 'package:rosseti_second/colors.dart';
 
 SizedBox chatGroupSeparatorWidget(DateTime date) {
   return SizedBox(

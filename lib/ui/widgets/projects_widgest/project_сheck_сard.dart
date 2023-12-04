@@ -33,13 +33,13 @@ Widget checkProjectCard(
                     onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) => Hero(
-                            tag: networkImagePath!,
-                            child: Image.network(networkImagePath!)),
+                            tag: networkImagePath,
+                            child: Image.network(networkImagePath)),
                       ));
                     },
                     child: Hero(
-                        tag: networkImagePath!,
-                        child: Image.network(networkImagePath!))),
+                        tag: networkImagePath,
+                        child: Image.network(networkImagePath))),
           ),
           SizedBox(
               height: 68,
@@ -57,7 +57,7 @@ Widget checkProjectCard(
                         }
                       },
                       child: videoPlayerController != null
-                          ? VideoPlayer(videoPlayerController!)
+                          ? VideoPlayer(videoPlayerController)
                           : const Center(child: CircularProgressIndicator()),
                     )),
         ],

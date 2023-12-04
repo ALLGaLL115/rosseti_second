@@ -24,19 +24,19 @@ class _PlayerPageState extends State<PlayerPage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-            leading: IconButton(
-                onPressed: () async {
-                  widget.videoPlayerController.pause();
-                  if (!context.mounted) return;
-                  Navigator.of(context).pop();
-                },
-                icon: const Icon(Icons.arrow_back_ios))),
-        body: Center(
-          child: Chewie(
+        body: Stack(children: [
+          Chewie(
               controller: ChewieController(
                   videoPlayerController: widget.videoPlayerController)),
-        ),
+          BackButton(
+            color: Colors.white,
+            onPressed: () {
+              widget.videoPlayerController.pause();
+              if (!context.mounted) return;
+              Navigator.of(context).pop();
+            },
+          )
+        ]),
       ),
     );
   }

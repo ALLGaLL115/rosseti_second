@@ -21,9 +21,9 @@ Widget takePhotoButton(
               children: [
                 continueButton(
                     onPressed: () async {
-                      String _imagePath =
+                      String imagePath =
                           await pickImage(imageSource: ImageSource.camera);
-                      onPressed(_imagePath);
+                      onPressed(imagePath);
                       if (!context.mounted) return;
                       Navigator.pop(context);
                     },
@@ -34,9 +34,9 @@ Widget takePhotoButton(
                 ),
                 continueButton(
                     onPressed: () async {
-                      String _imagePath =
+                      String imagePath0 =
                           await pickImage(imageSource: ImageSource.gallery);
-                      onPressed(_imagePath);
+                      onPressed(imagePath0);
 
                       if (!context.mounted) return;
                       Navigator.pop(context);

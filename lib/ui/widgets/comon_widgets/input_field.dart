@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:rosseti_second/colors.dart';
 import 'package:rosseti_second/strings.dart';
+import 'package:rosseti_second/text_styles.dart';
 
 class InputField extends StatefulWidget {
   final String? initialText;
@@ -61,14 +63,7 @@ class _InputFieldState extends State<InputField> {
 
 textFieldInputDecoration({String? hintText}) {
   return InputDecoration(
-    contentPadding: EdgeInsets.all(16),
-    // focusedBorder: OutlineInputBorder(
-    //   borderRadius: BorderRadius.circular(15.0),
-    //   borderSide: BorderSide(
-    //     color: mainColor,
-    //   ),
-    // ),
-
+    contentPadding: const EdgeInsets.all(16),
     errorBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(15.0),
       borderSide: const BorderSide(
@@ -104,8 +99,7 @@ textFieldInputDecoration({String? hintText}) {
       ),
     ),
     hintText: hintText,
-    hintStyle: const TextStyle(
-        fontWeight: FontWeight.w400, fontSize: 20, color: Colors.grey),
+    hintStyle: basicGreyTextStyle,
     border: InputBorder.none,
   );
 }

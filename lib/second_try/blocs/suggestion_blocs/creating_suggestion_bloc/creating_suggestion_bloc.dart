@@ -8,11 +8,9 @@ part 'creating_suggestion_state.dart';
 
 class CreatingSuggestionBloc
     extends Bloc<CreatingSuggestionEvent, CreatingSuggestionState> {
-  late SendSuggestionProvider _sendSuggestionProvider;
   CreatingSuggestionBloc(
       {required SendSuggestionProvider sendSuggestionProvider})
-      : _sendSuggestionProvider = sendSuggestionProvider,
-        super(const CreatingSuggestionState.initial()) {
+      : super(const CreatingSuggestionState.initial()) {
     on<TitleChangeEvent>(
       (event, emit) => emit(state.copyWith(title: event.title)),
     );

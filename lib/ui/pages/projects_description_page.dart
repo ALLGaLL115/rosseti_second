@@ -26,7 +26,6 @@ class _ProjectDescriptionPageState extends State<ProjectDescriptionPage> {
 
   @override
   void initState() {
-    // TODO: implement initState
     suggestion = widget.suggestion;
     if (suggestion.existingSolutionVideo != null) {
       _existingVideoController = VideoPlayerController.networkUrl(

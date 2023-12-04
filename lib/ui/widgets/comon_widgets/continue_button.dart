@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rosseti_second/strings.dart';
+import 'package:rosseti_second/text_styles.dart';
 
 Widget continueButton({
   required VoidCallback onPressed,
@@ -10,9 +11,8 @@ Widget continueButton({
     height: 58,
     decoration: BoxDecoration(
         color: Colors.white,
-        boxShadow: [
-          const BoxShadow(
-              offset: Offset(0, 0.3), blurRadius: 0.11, spreadRadius: 0)
+        boxShadow: const [
+          BoxShadow(offset: Offset(0, 0.3), blurRadius: 0.11, spreadRadius: 0)
         ],
         borderRadius: BorderRadius.circular(24)),
     child: FilledButton(
@@ -23,7 +23,7 @@ Widget continueButton({
         onPressed: onPressed,
         child: Text(
           text,
-          style: const TextStyle(color: mainColor),
+          style: basicTextStyle,
         )),
   );
 }

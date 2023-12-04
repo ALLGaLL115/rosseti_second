@@ -8,7 +8,7 @@ import 'package:rosseti_second/second_try/models/comment_model.dart';
 class CommentProvider {
   Future<Either<String, List<Comment>>> addComment(
       {required String text, required int suggestionId}) async {
-    final _token = Boxes.getTokenBox().values.first;
+    final token = Boxes.getTokenBox().values.first;
     var url =
         "https://phystechlab.ru/rosseti/public/api/suggestions/comment/store";
 
@@ -22,7 +22,7 @@ class CommentProvider {
     request.headers.addAll(
       {
         "Accept": "application/json",
-        "Authorization": _token,
+        "Authorization": token,
         "Content-Type": "multipart/form-data"
       },
     );

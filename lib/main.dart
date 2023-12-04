@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:rosseti_second/colors.dart';
 import 'package:rosseti_second/second_try/blocs/cubits/desizion_cubit/desizion_cubit.dart';
 import 'package:rosseti_second/second_try/blocs/cubits/expertize_cubit/expertise_cubit.dart';
 import 'package:rosseti_second/second_try/blocs/cubits/rating_cubit/rating_cubit.dart';
@@ -16,6 +17,7 @@ import 'package:rosseti_second/second_try/providers/send_suggestion_provider.dar
 import 'package:rosseti_second/second_try/repo/auth_repo.dart';
 
 import 'package:rosseti_second/strings.dart';
+import 'package:rosseti_second/text_styles.dart';
 import 'package:rosseti_second/ui/pages/authetication.dart';
 // lib\ui\pages\auth_and_registration\
 // import 'package:rosseti_second/data/repositories/repository.dart';
@@ -43,7 +45,7 @@ void main() async {
 
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
       .then((_) {
-    runApp(const MyApp());
+    runApp(MyApp());
   });
 }
 
@@ -94,24 +96,21 @@ class MyApp extends StatelessWidget {
               fontFamily: 'ABeeZee',
               appBarTheme: const AppBarTheme(
                 actionsIconTheme: IconThemeData(),
-                // titleTextStyle: appbarTextStyle,
                 centerTitle: true,
+                titleTextStyle: titleTextStyle,
                 foregroundColor: mainColor,
                 backgroundColor: Colors.transparent,
                 toolbarHeight: 100,
               ),
             ),
-            home:
-                // AutheticationView()
-
-                ValueListenableBuilder(
+            home: ValueListenableBuilder(
               valueListenable: Boxes.getTokenBox().listenable(),
               builder: (context, box, __) {
                 if (box.isEmpty) {
                   return AutheticationView();
                 } else {
                   // box.clear();
-                  return MainView();
+                  return const MainView();
                 }
               },
             )

@@ -47,9 +47,8 @@ class SendSuggestionProvider {
         headers: {"Accept": "application/json", "Authorization": token},
         body: jsonEncode(suggestionModel.toJson()));
 
-    final json = await jsonDecode(request.body);
+    // final json = await jsonDecode(request.body);
     if (request.statusCode != 200) {
-      print("EErorr ${json["message"]}");
       return left("Fail error ${request.statusCode} ");
     } else {
       return right("success");

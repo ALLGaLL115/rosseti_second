@@ -19,7 +19,6 @@ class _VideoPageState extends State<VideoPage> {
 
   @override
   void initState() {
-    // TODO: implement initState
     _videoController =
         VideoPlayerController.networkUrl(Uri.parse(widget.videoPath))
           ..initialize().then((_) {
@@ -35,7 +34,6 @@ class _VideoPageState extends State<VideoPage> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     _chewieController.dispose();
     _videoController.dispose();
     super.dispose();
@@ -49,7 +47,7 @@ class _VideoPageState extends State<VideoPage> {
       backgroundColor: Colors.black,
       body: Center(
         child: Container(
-            margin: EdgeInsets.all(16),
+            margin: const EdgeInsets.all(16),
             height: 300,
             child: Stack(
               children: [
