@@ -11,7 +11,6 @@ class User {
   @HiveField(2)
   final String? phone;
   @HiveField(3)
-  final dynamic? topicId;
   @HiveField(4)
   final String? email;
   @HiveField(5)
@@ -29,7 +28,6 @@ class User {
     this.id,
     this.fullName,
     this.phone,
-    this.topicId,
     this.email,
     this.commentsCount,
     this.ratingsCount,
@@ -42,7 +40,6 @@ class User {
     this.id = 0,
     this.fullName = '',
     this.phone = '',
-    this.topicId = '',
     this.email = '',
     this.commentsCount = 0,
     this.ratingsCount = 0,
@@ -55,7 +52,6 @@ class User {
     int? id,
     String? fullName,
     String? phone,
-    dynamic topicId,
     String? email,
     int? commentsCount,
     int? ratingsCount,
@@ -67,7 +63,6 @@ class User {
         id: id ?? this.id,
         fullName: fullName ?? this.fullName,
         phone: phone ?? this.phone,
-        topicId: topicId ?? this.topicId,
         email: email ?? this.email,
         commentsCount: commentsCount ?? this.commentsCount,
         ratingsCount: ratingsCount ?? this.ratingsCount,
@@ -81,7 +76,6 @@ class User {
         id: json["id"],
         fullName: json["full_name"],
         phone: json["phone"],
-        topicId: json["topic_id"],
         email: json["email"],
         commentsCount: json["comments_count"],
         ratingsCount: json["ratings_count"],
@@ -94,7 +88,6 @@ class User {
         "id": id,
         "full_name": fullName,
         "phone": phone,
-        "topic_id": topicId,
         "email": email,
         "comments_count": commentsCount,
         "ratings_count": ratingsCount,

@@ -16,14 +16,18 @@ videoWidget({
         if (videoPath != null) {
           Navigator.of(context).push(MaterialPageRoute(
               builder: (context) =>
-                  VideoPlayer(VideoPlayerController.file(File(videoPath)))));
+                  VideoPlayer(VideoPlayerController.file(File(videoPath!)))));
         }
       },
-      child: SizedBox(
-          height: height,
-          width: width,
-          // padding: const EdgeInsets.all(8),
-          child: thumbnailPath == null
-              ? Image.asset("assets/images/play_arrow.png")
-              : Image.file(File(thumbnailPath!))));
+      child: Column(
+        children: [
+          SizedBox(
+              height: height,
+              width: width,
+              // padding: const EdgeInsets.all(8),
+              child: thumbnailPath == ""
+                  ? Image.asset("assets/images/play_arrow.png")
+                  : Image.file(File(thumbnailPath!))),
+        ],
+      ));
 }

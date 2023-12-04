@@ -1,38 +1,22 @@
-import 'dart:io';
-
 import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
-class LocalPlayer extends StatefulWidget {
-  LocalPlayer({
+class PlayerPage extends StatefulWidget {
+  final VideoPlayerController videoPlayerController;
+
+  const PlayerPage({
     super.key,
-    required this.videoPath,
+    required this.videoPlayerController,
   });
 
-  final String videoPath;
-
-  late final VideoPlayerController videoPlayerController;
-
   @override
-  State<LocalPlayer> createState() => _LocalPlayerState();
+  State<PlayerPage> createState() => _PlayerPageState();
 }
 
-class _LocalPlayerState extends State<LocalPlayer> {
-  @override
-  void initState() {
-    // TODO: implement initState
-    widget.videoPlayerController =
-        VideoPlayerController.file(File(widget.videoPath));
-    super.initState();
-  }
-
+class _PlayerPageState extends State<PlayerPage> {
   @override
   void dispose() {
-    // // TODO: implement dispose
-    // widget._videoPlayerController.pause();
-    // widget._videoPlayerController.seekTo(Duration(seconds: 0));
-
     super.dispose();
   }
 
@@ -44,8 +28,6 @@ class _LocalPlayerState extends State<LocalPlayer> {
             leading: IconButton(
                 onPressed: () async {
                   widget.videoPlayerController.pause();
-                  await widget.videoPlayerController
-                      .seekTo(const Duration(seconds: 0, milliseconds: 100));
                   if (!context.mounted) return;
                   Navigator.of(context).pop();
                 },

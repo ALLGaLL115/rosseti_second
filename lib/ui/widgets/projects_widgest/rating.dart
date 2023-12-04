@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:rosseti_second/strings.dart';
 
-ratingWidget({required Function(double value) onChange}) {
+ratingWidget({
+  required Function(double value) onChange,
+}) {
   return Column(
     children: [
-      const Text(evaluateTheProject),
+      Text(stringsUi['evaluateTheProject']!),
       RatingBar.builder(
-          initialRating: 4,
+          initialRating: 0,
           glowColor: Colors.amber,
           unratedColor: Colors.grey.withOpacity(0.3),
           minRating: 1,
@@ -17,7 +19,7 @@ ratingWidget({required Function(double value) onChange}) {
           itemPadding: const EdgeInsets.all(8),
           itemSize: 40,
           itemBuilder: (context, _) => const Icon(
-                Icons.star,
+                Icons.star_border_purple500_rounded,
                 color: Colors.amber,
               ),
           onRatingUpdate: (ratingValue) {

@@ -3,7 +3,7 @@ export 'chat_widgets/chat_group_separator.dart';
 export 'chat_widgets/chat_input.dart';
 export 'comon_widgets/continue_button.dart';
 export 'projects_widgest/desizion_button.dart';
-export 'home_widget.dart';
+export 'comon_widgets/home_widget.dart';
 export 'creatingWidgets/image_widget.dart';
 export 'creatingWidgets/input_field_large.dart';
 export 'comon_widgets/input_field_with_border.dart';
@@ -19,11 +19,12 @@ export 'comon_widgets/input_field.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:rosseti_second/strings.dart';
-import 'package:rosseti_second/ui/pages/home/status_page.dart';
+import 'package:rosseti_second/ui/pages/status_page.dart';
 
 class HeroPage extends StatelessWidget {
   final String heroTag;
   final Image image;
+
   const HeroPage({
     super.key,
     required this.image,

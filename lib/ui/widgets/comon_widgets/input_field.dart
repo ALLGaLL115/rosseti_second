@@ -52,7 +52,6 @@ class _InputFieldState extends State<InputField> {
             ],
             borderRadius: BorderRadius.circular(15)),
         child: TextFormField(
-          controller: controller,
           onChanged: (value) => onChange!(value),
           initialValue: initialText,
           decoration: textFieldInputDecoration(hintText: hintText),
@@ -60,17 +59,50 @@ class _InputFieldState extends State<InputField> {
   }
 }
 
-final textFieldBorder = OutlineInputBorder(
-    borderRadius: BorderRadius.circular(15),
-    borderSide: const BorderSide(color: mainColor, width: 2));
-
 textFieldInputDecoration({String? hintText}) {
   return InputDecoration(
-    errorBorder: textFieldBorder,
-    enabledBorder: textFieldBorder,
-    focusedBorder: textFieldBorder,
-    disabledBorder: textFieldBorder,
-    focusedErrorBorder: textFieldBorder,
+    contentPadding: EdgeInsets.all(16),
+    // focusedBorder: OutlineInputBorder(
+    //   borderRadius: BorderRadius.circular(15.0),
+    //   borderSide: BorderSide(
+    //     color: mainColor,
+    //   ),
+    // ),
+
+    errorBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(15.0),
+      borderSide: const BorderSide(
+        color: Colors.red,
+      ),
+    ),
+    enabledBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(15.0),
+      borderSide: const BorderSide(
+        color: mainColor,
+        width: 2,
+      ),
+    ),
+    focusedBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(15.0),
+      borderSide: const BorderSide(
+        color: mainColor,
+        width: 2,
+      ),
+    ),
+    disabledBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(15.0),
+      borderSide: const BorderSide(
+        color: mainColor,
+        width: 2,
+      ),
+    ),
+    focusedErrorBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(15.0),
+      borderSide: const BorderSide(
+        color: mainColor,
+        width: 2,
+      ),
+    ),
     hintText: hintText,
     hintStyle: const TextStyle(
         fontWeight: FontWeight.w400, fontSize: 20, color: Colors.grey),

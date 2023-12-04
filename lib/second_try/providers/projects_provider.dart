@@ -6,22 +6,27 @@ import 'package:http/http.dart' as http;
 import 'package:rosseti_second/second_try/models/suggestion_model.dart';
 
 class ProjectsProvider {
-  final _token = Boxes.getTokenBox().values.single;
-
-  Future<Either<String, List<Suggestion>>> getProjects() async {
+  Future<Either<String, List<Suggestion>>> getProjects(
+      final String token) async {
     final url = "https://phystechlab.ru/rosseti/public/api/suggestions/index";
 
     var respone = await http.get(Uri.parse(url), headers: {
       "Accept": "application/json",
-      "Authorization": _token,
+      "Authorization": token,
     });
 
     try {
       if (respone.statusCode != 200) {
         throw "Suggestions status code error ${respone.statusCode}";
       }
-      var jsonBody = await jsonDecode(respone.body);
-      final suggestions = jsonBody['suggestions'];
+      var json = await jsonDecode(respone.body);
+      final jsonSuggestions = json['suggestions'] as List;
+      final suggestions = jsonSuggestions
+          .map(
+            (e) => Suggestion.fromJson(e),
+          )
+          .toList();
+
       return right(suggestions);
     } catch (e) {
       return left(e.toString());

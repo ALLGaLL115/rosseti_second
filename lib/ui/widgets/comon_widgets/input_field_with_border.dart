@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rosseti_second/strings.dart';
 
-inputFieldWithBorder(BuildContext context, Function(String value) onChange) {
+inputFieldWithBorder(Function(String value) onChange) {
   return Container(
     width: double.infinity,
     height: 58,

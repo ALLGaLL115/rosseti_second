@@ -10,41 +10,55 @@ const TextStyle standart = TextStyle();
 const String exetingHero = "exetingHero";
 const String proposedHero = "proposedHero";
 
+const stringsUi = <String, String>{
+  "appName": "seti.inno",
+  "innovator": "Рационализатор",
+  "registration": "Регистрация",
+  "phone": "Телефон",
+  "further": "Далее",
+  "done": "Готово",
+  "applications": "Заявки",
+  "expertise": "Экспертизы",
+  "naming": "Название ",
+  "next": "Дальше",
+  "ratings": "Оценок",
+  "comments": "Комментариев",
+  "offers": "Предложений",
+  "approved": "Одобрено",
+  "topic": "тема проекта",
+  "projects": "Проекты",
+  "discussion": "Обсуждение",
+  "codeFromSms": "Код из СМС",
+  "createAnOffer": "Создать предложение",
+  "create": "Создать",
+  "tellAboutOffer": "Расскажите о предложении",
+  "chooseThemeAndName": "Виберите тему и название",
+  "projectTopic": "Тема проекта",
+  "howItsNow": "Расскажите как сейчас",
+  "howItsShouldBe": "Расскажите как надо",
+  "howItsWillBe": "Расскажите как будет",
+  "addPhotoOrVideo": "Добавьте фото или видео",
+  "myStatus": "Мой статус",
+  "silverStatus": "Серебряный статус",
+  "projectName": "Название проекта",
+  "authorProject": "автор",
+  "nowSo": "Сейчас так:",
+  "shouldBe": "Надо так:",
+  "willBe": "И тогда будет так:",
+  "evaluateTheProject": "Оцените проект:",
+  "discuss": "Обсудить",
+  "yourMessage": "Ваше сообщение",
+  "totalBonuses": "Итого бонусов",
+  "beforeTheGoldenStatusIsStill": "До золотого статуса ещё",
+  "or": "или",
+  "proposal": "предложение",
+  "sendRating?": "Отправить ли оцеку?",
+  "yes": "Да",
+  "no": "Нет",
+  "emptyField": "Пустое поле",
+  'empty': 'Пусто',
+  "phoneValidation": "Phone is too short",
+  "getCodeError": "Get code error",
+  "codeValidation": "Wrong code",
+};
 //assets
-const String appName = "seti.inno";
-const String innovator = "Рационализатор";
-const String registration = "Регистрация";
-const String phone = "Телефон";
-const String further = "Далее";
-const String done = "Готово";
-const String applications = "Заявки";
-const String expertise = "Экспертизы";
-const String naming = "Название ";
-const String next = "Дальше";
-const String ratings = "Оценок";
-const String comments = "Комментариев";
-const String offers = "Предложений";
-const String approved = "Одобрено";
-const String topic = "тема проекта";
-const String projects = "Проекты";
-const String discussion = "Обсуждение";
-const String codeFromSms = "Код из СМС";
-const String createAnOffer = "Создать предложение";
-const String create = "Создать";
-const String tellAboutOffer = "Расскажите о предложении";
-const String chooseThemeAndName = "Виберите тему и название";
-const String projectTopic = "Тема проекта";
-const String howItsNow = "Расскажите как сейчас";
-const String howItsShouldBe = "Расскажите как надо";
-const String howItsWillBe = "Расскажите как будет";
-const String addPhotoOrVideo = "Добавьте фото или видео";
-const String myStatus = "Мой статус";
-const String silverStatus = "Серебряный статус";
-const String projectName = "Название проекта";
-const String authorProject = "автор";
-const String nowSo = "Сейчас так:";
-const String shouldBe = "Надо так:";
-const String willBe = "И тогда будет так:";
-const String evaluateTheProject = "Оцените проект:";
-const String discuss = "Обсудить";
-const String yourMessage = "Ваше сообщение";

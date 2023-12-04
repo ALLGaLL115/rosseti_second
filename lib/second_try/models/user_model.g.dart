@@ -20,7 +20,6 @@ class UserAdapter extends TypeAdapter<User> {
       id: fields[0] as int?,
       fullName: fields[1] as String?,
       phone: fields[2] as String?,
-      topicId: fields[3] as dynamic,
       email: fields[4] as String?,
       commentsCount: fields[5] as int?,
       ratingsCount: fields[6] as int?,
@@ -41,7 +40,6 @@ class UserAdapter extends TypeAdapter<User> {
       ..writeByte(2)
       ..write(obj.phone)
       ..writeByte(3)
-      ..write(obj.topicId)
       ..writeByte(4)
       ..write(obj.email)
       ..writeByte(5)

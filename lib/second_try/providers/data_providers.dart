@@ -5,50 +5,35 @@ import 'package:rosseti_second/second_try/models/topic_model.dart';
 import 'package:rosseti_second/second_try/models/user_model.dart';
 
 class DataProviders {
-  Future<List<Topic>> getTopics() async {
-    final token = Boxes.getTokenBox().values.single;
-
-    var url = Uri.parse("https://phystechlab.ru/rosseti/public/api/topics");
-    var response = await http.get(url,
-        headers: {"Accept": "application/json", "Authorization": token});
-
-    if (response.statusCode != 200) {
-      throw "Error ${response.statusCode}";
-    }
-
-    var body = jsonDecode(response.body) as Map;
-    var topicsJson = body["topics"] as List;
-    var topics = topicsJson.map((json) => Topic.fromJson(json)).toList();
-    return topics;
-  }
-
-  Future<User> getUser() async {
-    final token = Boxes.getTokenBox().values.single;
-
+  Future<User> getUser({required String token}) async {
     final url = Uri.parse("https://phystechlab.ru/rosseti/public/api/user");
     final response = await http.get(url,
         headers: {'Accept': 'application/json', 'Authorization': token});
 
-    if (response.statusCode != 200)
-      throw "Error status code ${response.statusCode}";
+    try {
+      if (response.statusCode != 200)
+        throw "Error status code ${response.statusCode}";
 
-    final body = jsonDecode(response.body);
-    final user = User.fromJson(body);
+      final body = jsonDecode(response.body);
+      final user = User.fromJson(body);
 
-    if (body == null) throw 'Error body is null';
-    return user;
+      if (body == null) throw 'Error body is null';
+      return user;
+    } catch (e) {
+      rethrow;
+    }
   }
+}
 
-  Future getSuggestions() async {
-    final token = Boxes.getTokenBox().values.single;
+Future getSuggestions() async {
+  final token = Boxes.getTokenBox().values.single;
 
-    final url = Uri.parse(
-        "https://phystechlab.ru/rosseti/public/api/suggestions/index");
-    final response = await http.get(url,
-        headers: {'Accept': 'application/json', 'Authorization': token});
+  final url =
+      Uri.parse("https://phystechlab.ru/rosseti/public/api/suggestions/index");
+  final response = await http.get(url,
+      headers: {'Accept': 'application/json', 'Authorization': token});
 
-    if (response.statusCode != 200) throw "Error code ${response.statusCode}";
-    final body = jsonDecode(response.body);
-    final suggestionsJson = body["suggestions"] as List;
-  }
+  if (response.statusCode != 200) throw "Error code ${response.statusCode}";
+  final body = jsonDecode(response.body);
+  final suggestionsJson = body["suggestions"] as List;
 }

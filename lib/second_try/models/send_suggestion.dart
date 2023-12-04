@@ -2,7 +2,9 @@
 //
 //     final createSuggestion = createSuggestionFromJson(jsonString);
 
-class CreateSuggestionModel {
+import 'package:equatable/equatable.dart';
+
+class SuggestionSendModel extends Equatable {
   final String? title;
   final int? topicId;
   final String? existingSolutionText;
@@ -13,7 +15,7 @@ class CreateSuggestionModel {
   final String? proposedSolutionVideo;
   final String? positiveEffect;
 
-  const CreateSuggestionModel({
+  const SuggestionSendModel({
     this.title,
     this.topicId,
     this.existingSolutionText,
@@ -25,7 +27,7 @@ class CreateSuggestionModel {
     this.positiveEffect,
   });
 
-  const CreateSuggestionModel.empty()
+  const SuggestionSendModel.empty()
       : this(
           title: '',
           topicId: 0,
@@ -38,43 +40,16 @@ class CreateSuggestionModel {
           positiveEffect: '',
         );
 
-  CreateSuggestionModel copyWith({
-    String? title,
-    int? topicId,
-    String? existingSolutionText,
-    String? existingSolutionImage,
-    String? existingSolutionVideo,
-    String? proposedSolutionText,
-    String? proposedSolutionImage,
-    String? proposedSolutionVideo,
-    String? positiveEffect,
-  }) =>
-      CreateSuggestionModel(
-        title: title ?? this.title,
-        topicId: topicId ?? this.topicId,
-        existingSolutionText: existingSolutionText ?? this.existingSolutionText,
-        existingSolutionImage:
-            existingSolutionImage ?? this.existingSolutionImage,
-        existingSolutionVideo:
-            existingSolutionVideo ?? this.existingSolutionVideo,
-        proposedSolutionText: proposedSolutionText ?? this.proposedSolutionText,
-        proposedSolutionImage:
-            proposedSolutionImage ?? this.proposedSolutionImage,
-        proposedSolutionVideo:
-            proposedSolutionVideo ?? this.proposedSolutionVideo,
-        positiveEffect: positiveEffect ?? this.positiveEffect,
-      );
-
-  factory CreateSuggestionModel.fromJson(Map<String, dynamic> json) =>
-      CreateSuggestionModel(
+  factory SuggestionSendModel.fromJson(Map<String, dynamic> json) =>
+      SuggestionSendModel(
         title: json["title"],
         topicId: json["topic_id"],
         existingSolutionText: json["existing_solution_text"],
-        existingSolutionImage: json["existing_solution_image"],
-        existingSolutionVideo: json["existing_solution_video"],
+        // existingSolutionImage: json["existing_solution_image"],
+        // existingSolutionVideo: json["existing_solution_video"],
         proposedSolutionText: json["proposed_solution_text"],
-        proposedSolutionImage: json["proposed_solution_image"],
-        proposedSolutionVideo: json["proposed_solution_video"],
+        // proposedSolutionImage: json["proposed_solution_image"],
+        // proposedSolutionVideo: json["proposed_solution_video"],
         positiveEffect: json["positive_effect"],
       );
 
@@ -89,4 +64,18 @@ class CreateSuggestionModel {
         "proposed_solution_video": proposedSolutionVideo,
         "positive_effect": positiveEffect,
       };
+
+  @override
+  // TODO: implement props
+  List<Object?> get props => [
+        title,
+        topicId,
+        existingSolutionText,
+        existingSolutionImage,
+        existingSolutionVideo,
+        proposedSolutionText,
+        proposedSolutionImage,
+        proposedSolutionVideo,
+        positiveEffect,
+      ];
 }

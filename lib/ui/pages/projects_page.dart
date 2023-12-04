@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rosseti_second/second_try/blocs/suggestion_ckeck_bloc/suggestion_check_bloc.dart';
-import 'package:rosseti_second/second_try/blocs/suggestions_bloc/suggestion_bloc.dart';
+
+import 'package:rosseti_second/second_try/blocs/load_suggestions_bloc/load_suggestions_bloc.dart';
+import 'package:rosseti_second/second_try/providers/projects_provider.dart';
+import 'package:rosseti_second/strings.dart';
 import 'package:rosseti_second/ui/pages/pages.dart';
 import 'package:rosseti_second/ui/widgets/widgets.dart';
 
@@ -15,50 +17,48 @@ class ProjectsPage extends StatefulWidget {
 class _ProjectsPageState extends State<ProjectsPage> {
   @override
   Widget build(BuildContext context) {
-    final blocOfSuggestions = context.watch<SuggestionBloc>();
-    return SafeArea(
-        child: Scaffold(
-      appBar: AppBar(
-        title: const Text("projects_string"),
-        actions: getActions(context: context),
+    return BlocProvider(
+      create: (context) => LoadSuggestionsBloc(
+          projectsProvider: RepositoryProvider.of<ProjectsProvider>(context)),
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text(stringsUi['projects']!),
+          actions: getActions(context: context),
+        ),
+        body: BlocBuilder<LoadSuggestionsBloc, LoadSuggestionsState>(
+          builder: (context, state) {
+            switch (state.status) {
+              case LoadSuggstionsStatus.loading:
+                BlocProvider.of<LoadSuggestionsBloc>(context)
+                    .add(const LoadSuggestionsEvent());
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              case LoadSuggstionsStatus.loaded:
+                return ListView.builder(
+                  itemCount: state.suggestions.length,
+                  itemBuilder: (context, index) {
+                    final suggestion = state.suggestions[index];
+                    if (suggestion.topicId! < 17) {
+                      return projectCard(
+                          suggestion: suggestion,
+                          onTap: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => ProjectDescriptionPage(
+                                suggestion: suggestion,
+                              ),
+                            ));
+                          });
+                    }
+                    return SizedBox();
+                  },
+                );
+              case LoadSuggstionsStatus.error:
+                return Text(state.error!);
+            }
+          },
+        ),
       ),
-      body: BlocBuilder<SuggestionBloc, SuggestionState>(
-        builder: (context, state) {
-          switch (state.status) {
-            case SuggestionsStatus.initial:
-              blocOfSuggestions.add(LoadSuggestions());
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
-            case SuggestionsStatus.loading:
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
-            case SuggestionsStatus.done:
-              return ListView.builder(
-                itemCount: state.suggestions.length,
-                itemBuilder: (context, index) {
-                  final suggestion = state.suggestions.elementAt(index);
-                  return projectCard(
-                      author: suggestion.author!.fullName!,
-                      projectName: suggestion.title!,
-                      projectTopic: suggestion.topicId.toString(),
-                      projectImageUrl: suggestion.existingSolutionImage!,
-                      onTap: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => ProjectDescriptionPage(
-                                  suggestion: suggestion,
-                                )));
-                      });
-                },
-              );
-            case SuggestionsStatus.error:
-              return Center(
-                child: Text(state.error!),
-              );
-          }
-        },
-      ),
-    ));
+    );
   }
 }

@@ -15,14 +15,13 @@ topicsWidget(
         icon: Image.asset("assets/images/video-player 1.png"),
         underline: null,
         isExpanded: true,
-        value: items.first,
         items: items
             .map((topic) => DropdownMenuItem(
                 value: topic,
                 child: Text(
                   topic.title,
                   textWidthBasis: TextWidthBasis.parent,
-                  style: TextStyle(overflow: TextOverflow.clip),
+                  style: const TextStyle(overflow: TextOverflow.clip),
                   maxLines: 2,
                 )))
             .toList(),

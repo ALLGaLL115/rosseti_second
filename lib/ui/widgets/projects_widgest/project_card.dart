@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:rosseti_second/second_try/boxes.dart';
+import 'package:rosseti_second/second_try/models/suggestion_model.dart';
 import 'package:rosseti_second/strings.dart';
 
-projectCard(
-    {required String author,
-    required String projectName,
-    required String projectTopic,
-    required String projectImageUrl,
-    required Function() onTap}) {
+projectCard({required Suggestion suggestion, required Function() onTap}) {
   return GestureDetector(
     onTap: onTap,
     child: Padding(
@@ -28,11 +25,14 @@ projectCard(
               width: 60,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
-                  image: DecorationImage(
-                      fit: BoxFit.fill,
-                      image: NetworkImage(
-                        projectImageUrl,
-                      ))),
+                  image: suggestion.existingSolutionImage != null
+                      ? DecorationImage(
+                          fit: BoxFit.fill,
+                          image: NetworkImage(
+                            suggestion.existingSolutionImage!,
+                          ))
+                      : DecorationImage(
+                          image: const AssetImage("assets/images/img.png"))),
             ),
             const Spacer(),
             SizedBox(
@@ -40,15 +40,21 @@ projectCard(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  Text(projectName,
+                  Text(suggestion.title ?? stringsUi['naming']!,
                       style: standart, overflow: TextOverflow.ellipsis),
                   const Spacer(),
                   Text(
-                    author,
+                    suggestion.author!.fullName ?? stringsUi["empty"]!,
                     style:
                         const TextStyle(fontSize: 14, color: Color(0xffA1A1A1)),
                   ),
-                  Text(projectTopic,
+                  Text(
+                      Boxes.getTopicsBox()
+                          .values
+                          //из-за этого отображаеться не все там внизу ListView ошибка но тем всего 15
+                          .elementAt(suggestion.topicId! - 1)
+                          .id
+                          .toString(),
                       style: const TextStyle(fontSize: 14, color: mainColor))
                 ],
               ),

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
 chatInputField(
-    {required Function(String value) onChange, required Function() onSend}) {
+    {
+    // required Function(String value) onChange,
+    required Function() onSend,
+    TextEditingController? controller}) {
   return Container(
     color: Colors.grey.withAlpha(40),
     child: Container(
@@ -25,7 +28,8 @@ chatInputField(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8.0),
               child: TextField(
-                onChanged: (value) => onChange(value),
+                controller: controller,
+                // onChanged: (value) => onChange(value),
                 decoration: const InputDecoration(border: InputBorder.none),
               ),
             ),
